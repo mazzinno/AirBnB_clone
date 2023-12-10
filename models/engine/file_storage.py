@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 """
-Write a class that defines all common attributes/methods for other classes
+Write a class that defines all common
+attributes/methods for other classes
 """
 import json
 
+
 class FileStorage:
     """
-    class that serializes instances to a JSON file and deserializes JSON file to instances
+    class that serializes instances to a
+    JSON fileand deserializes JSON file to instances
     """
     __file_path = "file.json"
     __objects = {}
