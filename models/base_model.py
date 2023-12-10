@@ -4,6 +4,8 @@ Write a class that defines all common attributes/methods for other classes
 """
 import uuid
 from datetime import datetime
+from models import storage
+
 
 class BaseModel:
     """
@@ -15,9 +17,14 @@ class BaseModel:
         """
         if kwargs:
             if key == 'created_at':
-                kwargs['created_at'] = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                kwargs['created_at'] = datetime.strptime(
+                    value,
+                    "%Y-%m-%dT%H:%M:%S.%f"
+                )
             if key == 'updated_at':
-                kwargs['updated_at'] = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                kwargs['updated_at'] = datetime.strptime(
+                    value,
+                    "%Y-%m-%dT%H:%M:%S.%f")
 
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -26,6 +33,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
+            storage.new(self)
 
     def __str__(self):
         """
@@ -43,6 +51,7 @@ class BaseModel:
         updated_at with the current datetime
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
