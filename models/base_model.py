@@ -1,20 +1,16 @@
 #!/usr/bin/python3
-"""
-Write a class that defines all common attributes/methods for other classes
-"""
+'''module base_model'''
+
+
 import uuid
 from datetime import datetime
 import models
 
 
-class BaseModel:
-    """
-    A class that defines all common attributes/methods for other classes
-    """
+class BaseModel():
+    '''baseModel class'''
     def __init__(self, *args, **kwargs):
-        """
-        Initializes the attributes
-        """
+        '''class constructor for class BaseModel'''
         if kwargs:
             kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
                                                      '%Y-%m-%dT%H:%M:%S.%f')
@@ -31,29 +27,19 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """
-        string representaition of something
-        """
-        return (
-            "[{}] ({}) {}".format(
-                self.__class__.__name__, self.id, self.__dict__
-            )
-        )
+        '''string BaseModel instance'''
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
-        """
-        updates the public instance attribute
-        updated_at with the current datetime
-        """
+        '''updates 'updated_at' instance with current date/time'''
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """
-        returns a dictionary containing all keys/values
-        """
-        obj_dict = self.__dict__.copy()
-        obj_dict['created_at'] = self.created_at.isoformat()
-        obj_dict['updated_at'] = self.updated_at.isoformat()
-        obj_dict['__class__'] = self.__class__.__name__
-        return (obj_dict)
+        '''dictionary representation ==> instance'''
+        new_dict = dict(self.__dict__)
+        new_dict['created_at'] = self.__dict__['created_at'].isoformat()
+        new_dict['updated_at'] = self.__dict__['updated_at'].isoformat()
+        new_dict['__class__'] = self.__class__.__name__
+        return (new_dict)
