@@ -16,15 +16,10 @@ class BaseModel:
         Initializes the attributes
         """
         if kwargs:
-            if key == 'created_at':
-                kwargs['created_at'] = datetime.strptime(
-                    value,
-                    "%Y-%m-%dT%H:%M:%S.%f"
-                )
-            if key == 'updated_at':
-                kwargs['updated_at'] = datetime.strptime(
-                    value,
-                    "%Y-%m-%dT%H:%M:%S.%f")
+            kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
+                                                     '%Y-%m-%dT%H:%M:%S.%f')
+            kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
+                                                     '%Y-%m-%dT%H:%M:%S.%f')
 
             for key, value in kwargs.items():
                 if key != '__class__':
