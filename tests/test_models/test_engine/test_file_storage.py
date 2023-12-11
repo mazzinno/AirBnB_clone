@@ -18,7 +18,7 @@ from models.user import User
 
 class TestFileStorage(unittest.TestCase):
     """
-    Test for FileStorage
+    Testing the FileStorage
     """
 
     def test_pep8_FileStorage(self):
@@ -28,7 +28,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def setUp(self):
-        """Sets up class test"""
+        """Seting up a class test"""
 
         self.b1 = BaseModel()
         self.a1 = Amenity()

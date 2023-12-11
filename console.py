@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-Defines entry point of the command interpreter.
+Defines entry point of the command interpreter rrr
 '''
 import cmd
 import shlex
@@ -16,7 +16,7 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    '''Implements the class HBNBCommand.'''
+    '''Implementing of the class HBNBCommand.'''
     prompt = '(hbnb) '
     __classes = [
         "Amenity",
@@ -132,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
 
     def check_class_name(self, name=""):
         """
-        Checking if stdin user typed class name and id
+        Checking if stdin user typed class name and id well eayhhh
         """
         if len(name) == 0:
             print("** class name missing **")

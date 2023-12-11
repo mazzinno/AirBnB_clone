@@ -46,7 +46,7 @@ class TestAmenity(unittest.TestCase):
 
     def test_class(self):
         """
-        Validate the types of attributes an class
+        Validate the types of attributes in some class
         """
         with self.subTest(msg='Inheritance'):
             self.assertTrue(issubclass(Amenity, BaseModel))
