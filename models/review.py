@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-'''class inherent of BaseModel'''
+'''Defines Review class.'''
 from models.base_model import BaseModel
 
 
 class Review(BaseModel):
-    '''the review class'''
+    '''Represents Review class.'''
 
     place_id = ""
     user_id = ""

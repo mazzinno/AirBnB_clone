@@ -1,36 +1,34 @@
 #!/usr/bin/python3
-"""file_storage.py module and class"""
+"""Module: file_storage.py Defines a `FileStorage` class."""
+
 import json
 from models.base_model import BaseModel
 from models.user import User
-from models.state import State
-from models.city import City
 from models.amenity import Amenity
+from models.city import City
 from models.place import Place
 from models.review import Review
+from models.state import State
 
 
 class FileStorage():
     """
-    Serializes instances to a JSON file and deserializes
-    JSON file to instances.
-
-    Attributes:
-        __file_path (str): Path to the JSON file.
-        __objects (dict): Store all objects.
+    serializes instances to a JSON file and
+    deserializes JSON file to instances
     """
+
     __file_path = 'file.json'
     __objects = {}
 
     def all(self):
         """
-        Returns the dictionary __objects.
+        returns the dictionary __objects
         """
         return FileStorage.__objects
 
     def new(self, obj):
         """
-        Sets in __objects the obj with key<obj class name>.id.
+        sets in __objects the obj with key <obj class name>.id
         """
         if obj:
             key = "{}.{}".format(obj.__class__.__name__, obj.id)
@@ -38,7 +36,7 @@ class FileStorage():
 
     def save(self):
         """
-        Serializes __objects to the JSON file.
+        serializes __objects to the JSON file (path: __file_path)
         """
         new_dict = {}
         for key, value in FileStorage.__objects.items():
@@ -48,15 +46,15 @@ class FileStorage():
 
     def reload(self):
         """
-        deserialize the JSON file __file_path to __objects, if it exists.
+        Deserialize the JSON file __file_path to __objects, if it exists
         """
         try:
             with open(FileStorage.__file_path, mode='r') as my_file:
                 new_dict = json.load(my_file)
 
             for key, value in new_dict.items():
-                cls_name = value.get('__class__')
-                obj = eval(cls_name + '(**value)')
+                class_name = value.get('__class__')
+                obj = eval(class_name + '(**value)')
                 FileStorage.__objects[key] = obj
 
         except FileNotFoundError:

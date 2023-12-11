@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''module base_model'''
+'''defines all common attributes/methods'''
 
 
 import uuid
@@ -8,9 +8,9 @@ import models
 
 
 class BaseModel():
-    '''baseModel class'''
+    '''represents the BaseModel of the AirBnB proj'''
     def __init__(self, *args, **kwargs):
-        '''class constructor for class BaseModel'''
+        '''Initialize a new BaseModel.'''
         if kwargs:
             kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
                                                      '%Y-%m-%dT%H:%M:%S.%f')
@@ -27,17 +27,17 @@ class BaseModel():
             models.storage.new(self)
 
     def __str__(self):
-        '''string BaseModel instance'''
+        '''Returns the string representationof the instance'''
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
     def save(self):
-        '''updates 'updated_at' instance with current date/time'''
+        '''updates the public instance attribute'''
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        '''dictionary representation ==> instance'''
+        '''returns a dictionary containing all keys/values'''
         new_dict = dict(self.__dict__)
         new_dict['created_at'] = self.__dict__['created_at'].isoformat()
         new_dict['updated_at'] = self.__dict__['updated_at'].isoformat()

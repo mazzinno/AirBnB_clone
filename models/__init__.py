@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" __init__ magic method for models"""
+"""Create unique FileStorage instance for the app"""
 from models.engine.file_storage import FileStorage
 
-
+"""VModule: __init__.py"""
 storage = FileStorage()
 storage.reload()
