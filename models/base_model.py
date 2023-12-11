@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-'''module base_model'''
-import uuid
+'''the module base_model'''
 from datetime import datetime
 import models
+import uuid
 
 
 class BaseModel():
@@ -31,7 +31,7 @@ class BaseModel():
 
     def save(self):
         '''Updates the public instance attribute updated_at
-        with the current datetime.'''
+        with current datetime.'''
         self.updated_at = datetime.now()
         models.storage.save()
 
