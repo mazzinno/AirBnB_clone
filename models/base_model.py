@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''the module base_model'''
+'''module base_model'''
 import uuid
 from datetime import datetime
 import models
@@ -25,19 +25,19 @@ class BaseModel():
             models.storage.new(self)
 
     def __str__(self):
-        '''Return the print/str representation the BaseModel instance.'''
+        '''string BaseModel instance'''
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
     def save(self):
-        '''Updates the public instance attribute updated_at
-        with current datetime.'''
+        '''updates the public instance attribute
+        updated_at with the current datetime'''
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        ''' returns a dictionary containing all keys/values of
-        __dict__ of the instance.'''
+        ''' returns a dictionary containing all
+        keys/values of __dict__ of the instance'''
         new_dict = dict(self.__dict__)
         new_dict['created_at'] = self.__dict__['created_at'].isoformat()
         new_dict['updated_at'] = self.__dict__['updated_at'].isoformat()
