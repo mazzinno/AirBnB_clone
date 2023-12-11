@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-Contains entry point of command interpretter
+Defines the console class
 '''
 import cmd
 from models.base_model import BaseModel
@@ -23,7 +23,7 @@ Class_Dict = {"BaseModel": BaseModel,
 
 class HBNBCommand(cmd.Cmd):
     '''
-    console class
+    the console class
     '''
     prompt = '(hbnb) '
     classes = {"BaseModel": BaseModel,
@@ -36,19 +36,19 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, command):
         '''
-        Quit command to exit the program
+        Quit command to exit prog
         '''
         exit()
 
     def help_quit(self):
         '''
-        Help for quit
+        Help for quiting
         '''
         print('Quit command to exit the program\n')
 
     def do_EOF(self, command):
         '''
-        End of file
+        End of the file
         '''
         print()
         exit()
@@ -67,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         '''
-        Create new instance of BaseModel
+        Create a whole new instance of BaseModel
         '''
         if not args:
             print('** class name missing **')
@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, args):
         '''
-        Print str repr of an instance
+        Print the tr repr of an instance
         bases on class name and id
         '''
         new_instance = args.partition(' ')
@@ -113,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
 
     def help_show(self):
         '''
-        Help for show
+        Help for show command
         '''
         print('Show command to show string representation\n')
 
@@ -171,14 +171,14 @@ class HBNBCommand(cmd.Cmd):
 
     def help_all(self):
         """
-        displays all instances [based on class if chosen]
+        displays all instances
         """
         print("displays all instances [based on class if chosen]")
         print("all [class]")
 
     def do_update(self, args):
         """
-        updates object
+        updates the object
         """
         new_object = ""
         class_name = ""
@@ -256,7 +256,7 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         '''
-        Advanced
+        Advanced taaask i guess
         '''
         _cmd = storage.all()
         if '.' in line:
