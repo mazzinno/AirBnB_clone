@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-""" Inherits from the BaseModel."""
+'''A class user that inherent from BaseModel'''
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """
-    Defines class User.
-    last_name (str): The last name of the user.
-    """
+    '''user class'''
+
     email = ""
     password = ""
     first_name = ""
